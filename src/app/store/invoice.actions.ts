@@ -5,7 +5,7 @@ export const loadInvoice = createAction('[Invoice] Load Invoice');
 
 export const loadInvoiceSuccess = createAction(
   '[Invoice] Load Invoice Success',
-  props<{ invoice: Invoice[] }>()
+  props<{ invoices: Invoice[] }>()
 );
 
 export const loadInvoiceFailure = createAction(

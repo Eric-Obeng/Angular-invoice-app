@@ -21,9 +21,9 @@ export class InvoiceEffects {
       ofType(loadInvoice),
       switchMap(() =>
         this.http.get<Invoice[]>(this.apiUrl).pipe(
-          map((invoice) => {
-            console.log(invoice);
-            return loadInvoiceSuccess({ invoice });
+          map((invoices) => {
+            console.log(invoices);
+            return loadInvoiceSuccess({ invoices });
           }),
           catchError((error) => of(loadInvoiceFailure({ error })))
         )

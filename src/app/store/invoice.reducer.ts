@@ -18,12 +18,12 @@ import {  InvoiceState, initialState } from '../interfaces/invoice';
 //   error: null,
 // };
 
-const _invoiceReducer = createReducer(
+export const _invoiceReducer = createReducer(
   initialState,
   on(loadInvoice, (state) => ({ ...state, error: null })),
-  on(loadInvoiceSuccess, (state, { invoice }) => ({
+  on(loadInvoiceSuccess, (state, { invoices }) => ({
     ...state,
-    invoice,
+    invoices,
     error: null,
   })),
   on(loadInvoiceFailure, (state, { error }) => ({
