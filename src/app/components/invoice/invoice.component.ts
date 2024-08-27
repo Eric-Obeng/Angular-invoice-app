@@ -6,7 +6,7 @@ import { ButtonComponent } from '../shared/button/button.component';
 import { InvoiceFilterComponent } from './invoice-filter/invoice-filter.component';
 import { selectAllInvoices } from '../../store/invoice.selector';
 import { Observable } from 'rxjs';
-import { Invoice } from '../../interfaces/invoice';
+import { Invoice, InvoiceState } from '../../interfaces/invoice';
 import { AppState } from '../../store/invoice.state';
 import { CommonModule } from '@angular/common';
 
@@ -20,7 +20,11 @@ import { CommonModule } from '@angular/common';
 export class InvoiceComponent {
   invoices$: Observable<Invoice[]> = this.store.select(selectAllInvoices);
 
-  constructor(private store: Store<AppState>, private http: HttpClient) {}
+  constructor(private store: Store<AppState>, private http: HttpClient) {
+    this.invoices$.subscribe((res) => {
+      console.log(res); // Log fetched invoices for debugging purposes
+    })
+  }
 
   ngOnInit(): void {
     this.store.dispatch(loadInvoice());

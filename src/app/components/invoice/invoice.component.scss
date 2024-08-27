@@ -2,8 +2,9 @@
 @import "../../../styles/base/variables";
 
 .invoice {
-  @include flex-container(column, center, center, nowrap, null);
+  @include flex-container(column, center, flex-start, nowrap, null);
   width: 100%;
+  height: 100vh;
   padding: 3.2rem 2.4rem;
 
   .invoice-desc {
@@ -28,6 +29,30 @@
 
     .invoice-toolbar-items {
       @include flex-container(row, center, space-between, nowrap, 1.8rem);
+    }
+  }
+
+  .content {
+    flex: 1;
+    align-content: center;
+
+    .empty-content {
+      @include flex-container(column, center, center, nowrap, 4rem);
+
+      .empty-content__text-div {
+        text-align: center;
+
+        .bold {
+          font-size: $ft-size-m;
+          font-weight: 600;
+          margin-bottom: 2rem;
+        }
+
+        p {
+          font-size: $ft-size-xs;
+          line-height: 1.5;
+        }
+      }
     }
   }
 }
