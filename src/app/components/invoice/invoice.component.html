@@ -9,16 +9,28 @@
       <app-button />
     </div>
   </div>
-  <div>
-    <div>
-      <div>
-        <img src="asset/images/illustration" alt="">
+  <div class="content">
+    <div
+      class="empty-content"
+      *ngIf="(invoices$ | async)?.length === 0; else invoiceList"
+    >
+      <div class="empty-content__svg-div">
+        <img
+          src="../../../assets/images/illustration-empty.svg"
+          alt="illustration-empty svg"
+        />
       </div>
-      <div >Load Invoices</div>
+      <div class="empty-content__text-div">
+        <p class="bold">There is nothing here</p>
+        <p class="text">Create an invoice by clicking the</p>
+        <p><strong>New</strong> button and get started</p>
+      </div>
     </div>
     <ng-template #invoiceList>
-      <div *ngFor="let invoice of invoices$ | async">
+      <div *ngFor="let invoice of invoices$ | async" class="invoice-list">
         <h1>{{ invoice.description }}</h1>
+        <p>{{ invoice.total }}</p>
+        <!-- <h1>Fetch data</h1> -->
       </div>
     </ng-template>
   </div>
