@@ -1,0 +1,38 @@
+@mixin flex-container(
+  $direction: row,
+  $align: flex-start,
+  $justify: flex-start,
+  $wrap: nowrap,
+  $gap: gap
+) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  flex-wrap: $wrap;
+  gap: $gap;
+}
+
+@mixin logo-bg(
+  $height: height,
+  $width: width,
+  $position: position,
+  $background: background
+) {
+  height: $height;
+  width: $width;
+  position: $position;
+  background: $background;
+}
+
+@mixin btn(
+  $width: width,
+  $height: height,
+  $color: background-color,
+  $text: color
+) {
+  width: $width;
+  height: $height;
+  background-color: $color;
+  color: $text;
+}

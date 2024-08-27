@@ -1,0 +1,13 @@
+@import "../base/variables";
+
+:root {
+  @each $key, $value in $light-mode {
+    --#{$key}: #{$value};
+  }
+}
+
+.dark-mode {
+  @each $key, $value in $dark-mode {
+    --#{$key}: #{$value};
+  }
+}

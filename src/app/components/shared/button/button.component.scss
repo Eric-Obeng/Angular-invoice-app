@@ -1,0 +1,17 @@
+@import "../../../../styles/base/mixins";
+@import "../../../../styles/base/variables";
+
+.invoice__add-btn {
+  @include flex-container(row, center, flex, nowrap, 0.6rem);
+  @include btn(9rem, 4.4rem, $Purple, $white);
+  border-radius: 2.4rem;
+  font-size: $ft-size-s;
+  padding: 0.6rem;
+  border: none;
+
+  .add-icon {
+    @include btn(3.2rem, 3.2rem, $white, $Purple);
+    border-radius: 50%;
+    @include flex-container(row, center, center, nowrap, 1.8rem);
+  }
+}

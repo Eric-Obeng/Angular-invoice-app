@@ -1,0 +1,33 @@
+@import "../../../styles/base/mixins";
+@import "../../../styles/base/variables";
+
+.invoice {
+  @include flex-container(column, center, center, nowrap, null);
+  width: 100%;
+  padding: 3.2rem 2.4rem;
+
+  .invoice-desc {
+    font-size: $ft-size-l;
+    line-height: 1.25;
+
+    & h3 {
+      font-weight: 700;
+    }
+
+    & p {
+      font-size: $ft-size-s;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0.1rem;
+    }
+  }
+
+  .invoice-toolbar {
+    @include flex-container(row, center, space-between, nowrap, 1.8rem);
+    width: 100%;
+
+    .invoice-toolbar-items {
+      @include flex-container(row, center, space-between, nowrap, 1.8rem);
+    }
+  }
+}

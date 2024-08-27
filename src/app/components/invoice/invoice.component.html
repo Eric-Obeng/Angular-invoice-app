@@ -1,0 +1,25 @@
+<div class="invoice">
+  <div class="invoice-toolbar">
+    <div class="invoice-desc">
+      <h3>Invoice</h3>
+      <p>No Invoices</p>
+    </div>
+    <div class="invoice-toolbar-items">
+      <app-invoice-filter />
+      <app-button />
+    </div>
+  </div>
+  <div>
+    <div>
+      <div>
+        <img src="asset/images/illustration" alt="">
+      </div>
+      <div >Load Invoices</div>
+    </div>
+    <ng-template #invoiceList>
+      <div *ngFor="let invoice of invoices$ | async">
+        <h1>{{ invoice.description }}</h1>
+      </div>
+    </ng-template>
+  </div>
+</div>

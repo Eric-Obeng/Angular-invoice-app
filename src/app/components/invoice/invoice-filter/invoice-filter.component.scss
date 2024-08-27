@@ -1,0 +1,8 @@
+@import "../../../../styles/base/mixins";
+@import "../../../../styles/base/variables";
+
+.invoice__filter {
+  @include flex-container(row, center, center, nowrap, 1.8rem);
+  font-size: $ft-size-s;
+  font-weight: 600;
+}

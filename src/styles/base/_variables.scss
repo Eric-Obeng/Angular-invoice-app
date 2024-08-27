@@ -1,0 +1,55 @@
+// colors
+$dark-200: #0c0e16;
+$dark-100: #141625;
+
+$Purple-400: #1e2139;
+$Purple-300: #252945;
+
+// header bgc
+$Purple-200: #373b53;
+
+// header divider
+$divider-clr: #494e6e;
+
+$Purple: #7c5dfa;
+$Purple-light: #9277ff;
+
+$gray-300: #888eb0;
+$gray-200: #7e88c3;
+$gray-100: #dfe3fa;
+
+$light-bg: #f8f8fb;
+
+$Red: #ec5757;
+$Red-light: #ff9797;
+
+$white: #ffffff;
+
+// font-sizes
+$ft-size-xl: 3.2rem;
+$ft-size-l: 2rem;
+$ft-size-m: 1.6rem;
+$ft-size-s: 1.2rem;
+$ft-size-xs: 1.1rem;
+
+$light-mode: (
+  "body-bg": $light-bg,
+  "header-bg": $Purple-400,
+  "text-clr": $dark-200,
+  "card-clr": $white,
+);
+
+$dark-mode: (
+  "body-bg": $dark-100,
+  "header-bg": $Purple-400,
+  "text-clr": $white,
+  "card-clr": $Purple-400,
+);
+
+@function theme-value($key, $theme: $light-mode) {
+  @return map-get(map-get($themes, $theme), $key);
+}
+
+@mixin theme-aware($key, $property) {
+  #{$property}: var(--#{$key});
+}
