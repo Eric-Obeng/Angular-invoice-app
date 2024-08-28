@@ -19,7 +19,7 @@
   }
 
   .invoice-header {
-    @include flex-container(column, start, space-between, wrap, 1.5rem);
+    @include flex-container(column, start, space-between, wrap, null);
     max-height: 50%;
     width: 100%;
 
@@ -33,10 +33,11 @@
 
     .invoice-date {
       color: var(--text-clr-light);
+      align-self: flex-start;
     }
 
     .invoice-client {
-      align-self: flex-end;
+      align-self: flex-start;
       color: var(--text-clr-light);
     }
   }
