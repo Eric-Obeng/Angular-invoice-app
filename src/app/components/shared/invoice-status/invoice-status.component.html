@@ -1,0 +1,11 @@
+<div
+  class="invoice-status"
+  [ngClass]="{
+    paid: invoice.status === 'paid',
+    pending: invoice.status === 'pending',
+    draft: invoice.status === 'draft'
+  }"
+>
+  <span class="invoice-indicator">●</span>
+  <span class="status-text">{{ invoice.status }}</span>
+</div>
