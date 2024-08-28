@@ -5,4 +5,5 @@
   @include flex-container(row, center, center, nowrap, 1.8rem);
   font-size: $ft-size-s;
   font-weight: 600;
+  cursor: pointer;
 }
