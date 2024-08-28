@@ -21,6 +21,7 @@
   }
 }
 
+
 @media (min-width: 1024px) {
   .invoice-app {
     @include flex-container(row, start, start, null, null);
