@@ -1,0 +1,105 @@
+<div class="invoice-detail-wrapper" *ngIf="invoices$ | async as invoice">
+  <div class="invoice-detail">
+    <div class="navigate" (click)="navigateBack()">
+      <span>
+        <img
+          src="../../../assets/images/icon-arrow-left.svg"
+          alt="arrow left icon"
+        />
+      </span>
+      <p>Go back</p>
+    </div>
+    <div class="status-div">
+      <div class="status">
+        <p>Status</p>
+        <app-invoice-status [invoice]="invoice" />
+      </div>
+    </div>
+    <div class="details-info">
+      <div class="detail-info__col-1">
+        <div class="top">
+          <span class="invoice-id">{{ invoice.id }}</span>
+          <span class="invoice-title">{{ invoice.description }}</span>
+        </div>
+        <address class="address">
+          <span>
+            {{ invoice.senderAddress.street }}
+          </span>
+          <span>
+            {{ invoice.senderAddress.city }}
+          </span>
+          <span>
+            {{ invoice.senderAddress.postCode }}
+          </span>
+          <span>
+            {{ invoice.senderAddress.country }}
+          </span>
+        </address>
+      </div>
+
+      <div class="invoice-info">
+        <div class="invoice-dates">
+          <p class="date">
+            Invoice Date<br />
+            <strong>
+              {{ invoice.createdAt }}
+            </strong>
+          </p>
+          <p class="date">
+            Payment Due<br />
+            <strong> {{ invoice.paymentDue }} </strong>
+          </p>
+        </div>
+        <div class="invoice-client">
+          <p class="client">
+            Bill To<br />
+            <strong>
+              {{ invoice.clientName }}
+            </strong>
+          </p>
+
+          <address class="address">
+            {{ invoice.clientAddress.street }}<br />
+            {{ invoice.clientAddress.city }}<br />
+            {{ invoice.clientAddress.postCode }}<br />
+            United Kingdom
+          </address>
+        </div>
+        <div class="invoice-email">
+          Sent to<br />
+          <strong>
+            {{ invoice.clientEmail }}
+          </strong>
+        </div>
+      </div>
+
+      <div class="invoice-items">
+        <div class="item-header">
+          <span>Item Name</span>
+          <span>QTY.</span>
+          <span>Price</span>
+          <span>Total</span>
+        </div>
+        <div class="item-row">
+          <span>{{ invoice.description }}</span>
+          <span>{{ invoice.items[0].quantity }}</span>
+          <span>{{
+            invoice.items[0].price | currency : "BGP" : "symbol"
+          }}</span>
+          <span>{{ invoice.items[0].quantity * invoice.items[0].price }}</span>
+        </div>
+        <div class="item-row">
+          <span>Email Design</span>
+          <span>2</span>
+          <span>£ 200.00</span>
+          <span>£ 400.00</span>
+        </div>
+        <div class="total-amount">
+          <span>Amount Due</span>
+          <span>£ 556.00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div></div>
+</div>

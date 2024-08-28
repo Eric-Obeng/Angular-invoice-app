@@ -8,6 +8,12 @@
   font-size: $ft-size-s;
   padding: 0.6rem;
   border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: $Purple-light;
+  }
 
   .add-icon {
     @include btn(3.2rem, 3.2rem, $white, $Purple);

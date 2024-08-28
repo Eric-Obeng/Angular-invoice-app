@@ -1,0 +1,116 @@
+@import "../../../styles/base/mixins";
+@import "../../../styles/base/variables";
+
+.invoice-detail-wrapper {
+  @include flex-container(column, start, start, nowrap, null);
+  width: 100%;
+
+  .invoice-detail {
+    @include flex-container(column, start, start, nowrap, 3rem);
+    padding: 2.4rem;
+    width: 100%;
+
+    .navigate {
+      @include flex-container(row, start, start, null, 2.4rem);
+      width: 100%;
+      font-size: $ft-size-s;
+      cursor: pointer;
+    }
+
+    .status-div {
+      @include card(100%, 9.1rem, var(--card-clr), null, 0.8rem);
+
+      .status {
+        @include flex-container(row, center, space-between, null, null);
+        height: 100%;
+        padding: 2.4rem;
+
+        & p {
+          font-size: $ft-size-s;
+        }
+      }
+    }
+
+    .details-info {
+      @include flex-container(column, start, start, null, 3rem);
+      @include card(100%, 100%, var(--card-clr), null, 0.8rem);
+      padding: 2.4rem;
+      width: 100%;
+
+      .detail-info__col-1 {
+        @include flex-container(column, start, start, null, 1rem);
+
+        .top {
+          @include flex-container(column, start, start, null, null);
+          line-height: 1.5;
+        }
+
+        .address {
+          @include flex-container(column, start, start, null, null);
+          line-height: 1.5;
+        }
+      }
+
+      .invoice-info {
+        @include flex-container(row, start, start, wrap);
+        width: 100%;
+        flex-shrink: none;
+
+        .invoice-dates,
+        .invoice-client,
+        .invoice-email {
+          flex: 1 1 35%;
+        }
+
+        .invoice-dates {
+          @include flex-container(column, start, start, null, 2rem);
+
+          .date {
+            line-height: 1.8;
+
+            & strong {
+              font-size: $ft-size-s;
+              font-weight: 600;
+            }
+          }
+        }
+
+        .invoice-client {
+          @include flex-container(column, start, start, null, 0.5rem);
+
+          .client {
+            @include flex-container(column, start, start, null, 0.5rem);
+
+            & strong {
+              font-size: $ft-size-s;
+              font-weight: 600;
+            }
+          }
+
+          .address {
+            @include flex-container(column, start, start, null, null);
+            line-height: 1.5;
+          }
+        }
+
+        .invoice-email {
+          @include flex-container(column, start, start, null, 0.8rem);
+          margin-top: 2rem;
+          // align-self: flex-end;
+        }
+      }
+
+      .invoice-items {
+        width: 100%;
+        background-color: var(--detail);
+        @include card(100%, 100%, var(--detail), null, 0.8rem);
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .invoice-detail-wrapper {
+    width: 73rem;
+  }
+}

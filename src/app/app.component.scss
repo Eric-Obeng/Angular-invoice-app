@@ -1,2 +1,43 @@
 @import "../styles/base/variables";
+@import "../styles/base/mixins";
 
+.invoice-app {
+  @include flex-container(column, start, start, null, null);
+  width: 100vw;
+
+  .invoice-app__header {
+    display: flex;
+    width: 100%;
+
+    .header {
+      display: flex;
+
+      width: 100%;
+    }
+  }
+
+  .invoice-app__main-container {
+    width: 100%;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .invoice-app {
+    @include flex-container(row, start, start, null, null);
+    overflow: hidden !important;
+
+    .invoice-app__header {
+      width: 10.3rem;
+    }
+
+    .invoice-app__main-container {
+      @include flex-container(row, center, center, null, null);
+      flex: 1;
+      overflow: scroll;
+      scrollbar-width: none;
+      scroll-behavior: smooth;
+      width: 80rem;
+    }
+  }
+}
