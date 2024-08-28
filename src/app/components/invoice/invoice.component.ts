@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { loadInvoice } from '../../store/invoice.actions';
-import { HttpClient } from '@angular/common/http';
 import { ButtonComponent } from '../shared/button/button.component';
 import { InvoiceFilterComponent } from './invoice-filter/invoice-filter.component';
 import { selectAllInvoices } from '../../store/invoice.selector';
@@ -26,7 +25,7 @@ import { InvoiceItemComponent } from './invoice-item/invoice-item.component';
 export class InvoiceComponent {
   invoices$: Observable<Invoice[]> = this.store.select(selectAllInvoices);
 
-  constructor(private store: Store<AppState>, private http: HttpClient) {
+  constructor(private store: Store<AppState>) {
     this.invoices$.subscribe((res) => {
       console.log(res); // Log fetched invoices for debugging purposes
     });
