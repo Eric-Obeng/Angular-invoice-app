@@ -1,1 +1,25 @@
-<p>invoice-item works!</p>
+<div *ngFor="let invoice of invoices$ | async" class="invoice-list">
+  <div class="invoice-header">
+    <span class="invoice-id"><span class="hash">#</span>{{ invoice.id }}</span>
+    <span class="invoice-date">Due {{ invoice.createdAt }}</span>
+    <span class="invoice-client">{{ invoice.clientName }}</span>
+  </div>
+  <div class="invoice-details">
+    <span class="invoice-amount">{{ invoice.total | currency: 'GBP': 'symbol'}}</span>
+    <div
+      class="invoice-status"
+      [ngClass]="{
+        paid: invoice.status === 'paid',
+        pending: invoice.status === 'pending',
+        draft: invoice.status === 'draft'
+      }"
+    >
+      <span class="invoice-indicator">●</span>
+      <span class="status-text">{{ invoice.status }}</span>
+    </div>
+  </div>
+  <span  class="right-arrow">
+
+    <img src="../../../../assets/images/icon-arrow-right.svg" alt="">
+  </span>
+</div>

@@ -1,0 +1,113 @@
+@import "../../../../styles/base/variables";
+@import "../../../../styles/base/mixins";
+@import "../../../../styles/themes/theme";
+
+.invoice-list {
+  background-color: var(--card-clr);
+  height: 13.4rem;
+  border-radius: 0.8rem;
+  @include flex-container(column, start, space-between, null, null);
+  font-size: $ft-size-s;
+  width: 100%;
+  padding: 2.4rem;
+  border: 0.2rem solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border: 0.2rem solid $Purple;
+  }
+
+  .invoice-header {
+    @include flex-container(column, start, space-between, wrap, 1.5rem);
+    max-height: 50%;
+    width: 100%;
+
+    .invoice-id {
+      font-weight: 600;
+
+      .hash {
+        color: $Purple;
+      }
+    }
+
+    .invoice-date {
+      color: var(--text-clr-light);
+    }
+
+    .invoice-client {
+      align-self: flex-end;
+      color: var(--text-clr-light);
+    }
+  }
+
+  .invoice-details {
+    @include flex-container(row, start, space-between, wrap, 0.4rem);
+    // margin-top: 0.8rem;
+    width: 100%;
+
+    .invoice-amount {
+      font-size: $ft-size-m;
+      font-weight: 700;
+      align-self: flex-end;
+    }
+
+    .invoice-status {
+      @include flex-container(row, center, center, null, 0.4rem);
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.4rem;
+      height: 4rem;
+      width: 10.4rem;
+      text-transform: capitalize;
+      font-weight: 600;
+      // color: red;
+      // background-color: #e0f7ea;
+
+      &.paid {
+        color: #33d69f;
+        background-color: #f3fcf9;
+      }
+      &.pending {
+        color: #ff8f00;
+        background-color: #fff8f0;
+      }
+      &.draft {
+        color: #373b53;
+        background-color: #f3f3f5;
+      }
+    }
+  }
+
+  .right-arrow {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .invoice-list {
+    @include flex-container(row, center, space-between, null, 1rem);
+    height: 7.2rem;
+
+    .invoice-header {
+      @include flex-container(row, center, space-between, null);
+    }
+
+    .invoice-details {
+      @include flex-container(row, center, end, null, 4rem);
+
+      .invoice-amount {
+        align-self: center;
+      }
+    }
+
+    .right-arrow {
+      display: block;
+    }
+  }
+}
+
+// @media (min-width: 1024px) {
+//   .invoice-list {
+//     max-width: 73rem;
+//   }
+// }
