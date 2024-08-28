@@ -11,3 +11,8 @@ export const selectAllInvoices = createSelector(
   selectInvoiceState,
   (state: InvoiceState) => state.invoices
 );
+
+export const selectInvoiceById = (invoiceId: string) =>
+  createSelector(selectInvoiceState, (state: InvoiceState) =>
+    state.invoices.find((invoice) => invoice.id === invoiceId)
+  );

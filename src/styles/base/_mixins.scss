@@ -36,3 +36,17 @@
   background-color: $color;
   color: $text;
 }
+
+@mixin card(
+  $width: width,
+  $height: height,
+  $color: background-color,
+  $text: color,
+  $radius: border-radius,
+) {
+  width: $width;
+  height: $height;
+  background-color: $color;
+  color: $text;
+  border-radius: $radius;
+}

@@ -25,6 +25,9 @@ $Red-light: #ff9797;
 
 $white: #ffffff;
 
+$detail-card-light: #f9fafe;
+$detail-card-dark: #f9fafe;
+
 // font-sizes
 $ft-size-xl: 3.2rem;
 $ft-size-l: 2rem;
@@ -36,14 +39,18 @@ $light-mode: (
   "body-bg": $light-bg,
   "header-bg": $Purple-400,
   "text-clr": $dark-200,
+  "text-clr-light": $gray-200,
   "card-clr": $white,
+  "detail": $detail-card-light,
 );
 
 $dark-mode: (
   "body-bg": $dark-100,
   "header-bg": $Purple-400,
   "text-clr": $white,
+  "text-clr-light": $gray-200,
   "card-clr": $Purple-400,
+  "detail": $Purple-200,
 );
 
 @function theme-value($key, $theme: $light-mode) {
