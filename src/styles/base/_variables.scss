@@ -36,6 +36,8 @@ $light-mode: (
   "body-bg": $light-bg,
   "header-bg": $Purple-400,
   "text-clr": $dark-200,
+  "text-clr-light": $gray-200,
+
   "card-clr": $white,
 );
 
@@ -43,6 +45,7 @@ $dark-mode: (
   "body-bg": $dark-100,
   "header-bg": $Purple-400,
   "text-clr": $white,
+  "text-clr-light": $gray-200,
   "card-clr": $Purple-400,
 );
 

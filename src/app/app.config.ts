@@ -6,7 +6,7 @@ import { provideState, provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { InvoiceEffects } from './store/invoice.effects';
-import { _invoiceReducer, invoiceReducer } from './store/invoice.reducer';
+import { invoiceReducer } from './store/invoice.reducer';
 import { AppState } from './store/invoice.state';
 
 export const appConfig: ApplicationConfig = {
