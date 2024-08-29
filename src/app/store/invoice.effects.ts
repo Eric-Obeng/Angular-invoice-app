@@ -7,6 +7,8 @@ import {
   loadInvoice,
   loadInvoiceSuccess,
   loadInvoiceFailure,
+  addInvoiceAsDraft,
+  addInvoiceAsPending,
 } from './invoice.actions';
 import { Invoice } from '../interfaces/invoice';
 
@@ -31,3 +33,5 @@ export class InvoiceEffects {
     )
   );
 }
+
+

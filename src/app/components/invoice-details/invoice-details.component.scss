@@ -2,7 +2,7 @@
 @import "../../../styles/base/variables";
 
 .invoice-detail-wrapper {
-  @include flex-container(column, start, start, nowrap, null);
+  @include flex-container(column, center, center, nowrap, null);
   width: 100%;
 
   .invoice-detail {

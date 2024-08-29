@@ -23,9 +23,9 @@ export class InvoiceItemComponent {
   invoices$: Observable<Invoice[]> = this.store.select(selectAllInvoices);
 
   constructor(private store: Store<AppState>, private router: Router) {
-    this.invoices$.subscribe((res) => {
-      console.log(res); // Log fetched invoices for debugging purposes
-    });
+    // this.invoices$.subscribe((res) => {
+    //   console.log(res); // Log fetched invoices for debugging purposes
+    // });
   }
 
   ngOnInit(): void {

@@ -26,7 +26,7 @@ $Red-light: #ff9797;
 $white: #ffffff;
 
 $detail-card-light: #f9fafe;
-$detail-card-dark: #f9fafe;
+// $detail-card-dark: #f9fafe;
 
 // font-sizes
 $ft-size-xl: 3.2rem;
@@ -42,6 +42,7 @@ $light-mode: (
   "text-clr-light": $gray-200,
   "card-clr": $white,
   "detail": $detail-card-light,
+  'form-bg': $white
 );
 
 $dark-mode: (
@@ -51,6 +52,7 @@ $dark-mode: (
   "text-clr-light": $gray-200,
   "card-clr": $Purple-400,
   "detail": $Purple-200,
+  'form-bg': $dark-100
 );
 
 @function theme-value($key, $theme: $light-mode) {

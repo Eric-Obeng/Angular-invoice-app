@@ -3,10 +3,12 @@ import {
   loadInvoice,
   loadInvoiceSuccess,
   loadInvoiceFailure,
+  addInvoiceAsDraft,
+  addInvoiceAsPending,
 } from './invoice.actions';
 import { Invoice } from '../interfaces/invoice';
 import { Action } from '@ngrx/store';
-import {  InvoiceState, initialState } from '../interfaces/invoice';
+import { InvoiceState, initialState } from '../interfaces/invoice';
 
 // export interface InvoiceState {
 //   invoice: Invoice[];
@@ -29,6 +31,14 @@ export const _invoiceReducer = createReducer(
   on(loadInvoiceFailure, (state, { error }) => ({
     ...state,
     error,
+  })),
+  on(addInvoiceAsDraft, (state, { invoices }) => ({
+    ...state,
+    invoices: [...state.invoices, invoices],
+  })),
+  on(addInvoiceAsPending, (state, { invoices }) => ({
+    ...state,
+    invoices: [...state.invoices, invoices],
   }))
 );
 
