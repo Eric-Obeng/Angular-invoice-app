@@ -1,1 +1,240 @@
-<p>invoice-form works!</p>
+<div class="invoice-form">
+  <form [formGroup]="invoiceForm" class="form">
+    <div class="invoice-form-wrapper">
+      <div class="col-1">
+        <div class="navigate" (click)="closeForm()">
+          <span>
+            <img
+              src="../../../assets/images/icon-arrow-left.svg"
+              alt="arrow left icon"
+            />
+          </span>
+          <p>Go back</p>
+        </div>
+        <p class="title">New Invoice</p>
+      </div>
+      <div formGroupName="billFrom" class="billfrom group">
+        <h5>Bill From</h5>
+        <label for="streetAddress">
+          Street Address<br />
+          <input
+            class="form-item"
+            type="text"
+            formControlName="streetAddress"
+            placeholder="Street Address"
+            id="streetAddress"
+          />
+        </label>
+        <div class="location-div">
+          <label for="city">
+            City <br />
+            <input
+              class="form-item"
+              type="text"
+              formControlName="city"
+              placeholder="City"
+              id="city"
+            />
+          </label>
+          <label for="postCode">
+            Post Code <br />
+            <input
+              class="form-item"
+              type="text"
+              formControlName="postCode"
+              placeholder="Post Code"
+              id="postCode"
+            />
+          </label>
+        </div>
+        <label for="country">
+          Country <br />
+          <input
+            class="form-item"
+            type="text"
+            formControlName="country"
+            placeholder="Country"
+            id="country"
+          />
+        </label>
+      </div>
+
+      <div formGroupName="billTo" class="billTo group">
+        <h5>Bill To</h5>
+        <label for="clientName">
+          Client's Name <br />
+          <input
+            class="form-item"
+            class="form-item"
+            type="text"
+            formControlName="clientName"
+            placeholder="Client's Name"
+            id="clientName"
+          />
+        </label>
+        <label for="email">
+          Email <br />
+          <input
+            class="form-item"
+            type="email"
+            formControlName="clientEmail"
+            placeholder="Client's Email"
+            id="email"
+          />
+        </label>
+        <label for="clientStreetAddress">
+          Street Address <br />
+          <input
+            class="form-item"
+            type="text"
+            formControlName="streetAddress"
+            placeholder="Street Address"
+            id="clientStreetAddress"
+          />
+        </label>
+        <label for="clientCity">
+          City <br />
+          <input
+            class="form-item"
+            type="text"
+            formControlName="city"
+            placeholder="City"
+            id="clientCity"
+          />
+        </label>
+        <label for="clientPostCode">
+          Post Code <br />
+          <input
+            class="form-item"
+            type="text"
+            formControlName="postCode"
+            placeholder="Post Code"
+            id="clientPostCode"
+          />
+        </label>
+        <label for="clientCountry">
+          Country <br />
+          <input
+            class="form-item"
+            type="text"
+            formControlName="country"
+            placeholder="Country"
+            id="clientCountry"
+          />
+        </label>
+      </div>
+
+      <div class="group">
+        <label for="invoiceDate">
+          Invoice Date <br />
+          <input
+            class="form-item"
+            type="date"
+            formControlName="invoiceDate"
+            id="invoiceDate"
+          />
+        </label>
+        <label for="paymentTerm">
+          Payment Terms <br />
+          <select class="form-item" formControlName="paymentTerms" id="paymentTerm">
+            <option value="2">Next 2 Days</option>
+            <option value="3">Next 3 Days</option>
+            <option value="4">Next 4 Days</option>
+            <option value="5">Next 5 Days</option>
+            <option value="6">Next 6 Days</option>
+            <option value="7">Next 7 Days</option>
+          </select>
+        </label>
+
+        <label for="projectDescription">
+          Project Description <br />
+          <input
+            class="form-item"
+            type="text"
+            formControlName="projectDescription"
+            placeholder="Project Description"
+            id="projectDescription"
+          />
+        </label>
+      </div>
+
+      <!-- items list -->
+      <div formArrayName="items" class="group">
+        <div
+          *ngFor="let item of items.controls; let i = index"
+          class="group"
+          [formGroupName]="i"
+        >
+          <label for="itemName">
+            Item Name <br />
+            <input
+              class="form-item"
+              type="text"
+              formControlName="itemName"
+              placeholder="Item Name"
+              id="itemName"
+            />
+          </label>
+
+          <div class="new-item">
+            <label for="quantity">
+              Qty <br />
+              <input
+                type="number"
+                class="form-item"
+                formControlName="quantity"
+                placeholder="Qty."
+                id="quantity"
+                (input)="calculateTotal(i)"
+              />
+            </label>
+            <label for="price">
+              Price <br />
+              <input
+                type="number"
+                class="form-item"
+                formControlName="price"
+                placeholder="Price"
+                id="price"
+                (input)="calculateTotal(i)"
+              />
+            </label>
+            <label for="total">
+              Total <br />
+              <input
+                type="number"
+                id="total"
+                class="form-item"
+                formControlName="total"
+                placeholder="Total"
+              />
+            </label>
+            <button type="button" (click)="removeItem(i)">
+              <span
+                ><img
+                  src="../../../assets/images/icon-delete.svg"
+                  alt="delete icon"
+              /></span>
+            </button>
+          </div>
+        </div>
+        <button class="button" type="button" (click)="addItem()">
+          + Add New Item
+        </button>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button type="button" class="btn discard" (click)="closeForm()">
+        Discard
+      </button>
+      <button type="submit" class="btn draft" (click)="saveAsDraft()">
+        Save as Draft
+      </button>
+      <button type="submit" class="btn send" (click)="saveAndSend()">
+        Save & Send
+      </button>
+    </div>
+  </form>
+</div>

@@ -9,6 +9,7 @@ import { Invoice, InvoiceState } from '../../interfaces/invoice';
 import { AppState } from '../../store/invoice.state';
 import { CommonModule } from '@angular/common';
 import { InvoiceItemComponent } from './invoice-item/invoice-item.component';
+import { InvoiceFormComponent } from "../invoice-form/invoice-form.component";
 
 @Component({
   selector: 'app-invoice',
@@ -18,12 +19,15 @@ import { InvoiceItemComponent } from './invoice-item/invoice-item.component';
     InvoiceFilterComponent,
     CommonModule,
     InvoiceItemComponent,
-  ],
+    InvoiceFormComponent
+],
   templateUrl: './invoice.component.html',
   styleUrl: './invoice.component.scss',
 })
 export class InvoiceComponent {
   invoices$: Observable<Invoice[]> = this.store.select(selectAllInvoices);
+
+  showForm: boolean = false;
 
   constructor(private store: Store<AppState>) {
     this.invoices$.subscribe((res) => {
@@ -33,5 +37,13 @@ export class InvoiceComponent {
 
   ngOnInit(): void {
     this.store.dispatch(loadInvoice());
+  }
+
+  openForm() {
+    this.showForm = true;
+  }
+
+  closeForm() {
+    this.showForm = false;
   }
 }

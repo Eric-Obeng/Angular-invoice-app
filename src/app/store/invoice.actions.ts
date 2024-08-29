@@ -12,3 +12,13 @@ export const loadInvoiceFailure = createAction(
   '[Invoice] Load Invoice Failure',
   props<{ error: any }>()
 );
+
+export const addInvoiceAsDraft = createAction(
+  '[Invoice] Add Invoice As Draft',
+  props<{ invoices: Invoice }>()
+);
+
+export const addInvoiceAsPending = createAction(
+  '[Invoice] Add Invoice As Pending',
+  props<{ invoices: Invoice }>()
+);
