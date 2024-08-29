@@ -1,35 +1,44 @@
 <div class="invoice">
-  <div class="invoice-toolbar">
-    <div class="invoice-desc">
-      <h3>Invoice</h3>
-      <p>No Invoices</p>
+  <div class="invoice-div">
+    <div class="invoice-toolbar">
+      <div class="invoice-desc">
+        <h3>Invoice</h3>
+        <p>No Invoices</p>
+      </div>
+      <div class="invoice-toolbar-items">
+        <app-invoice-filter />
+        <app-button (buttonClick)="openForm()" />
+      </div>
     </div>
-    <div class="invoice-toolbar-items">
-      <app-invoice-filter />
-      <app-button />
+    <div class="content">
+      <div
+        class="empty-content"
+        *ngIf="(invoices$ | async)?.length === 0; else invoiceList"
+      >
+        <div class="empty-content__svg-div">
+          <img
+            src="../../../assets/images/illustration-empty.svg"
+            alt="illustration-empty svg"
+          />
+        </div>
+        <div class="empty-content__text-div">
+          <p class="bold">There is nothing here</p>
+          <p class="text">Create an invoice by clicking the</p>
+          <p><strong>New</strong> button and get started</p>
+        </div>
+      </div>
+      <ng-template #invoiceList>
+        <div class="invoice-list">
+          <app-invoice-item class="item" />
+        </div>
+      </ng-template>
     </div>
   </div>
-  <div class="content">
-    <div
-      class="empty-content"
-      *ngIf="(invoices$ | async)?.length === 0; else invoiceList"
-    >
-      <div class="empty-content__svg-div">
-        <img
-          src="../../../assets/images/illustration-empty.svg"
-          alt="illustration-empty svg"
-        />
-      </div>
-      <div class="empty-content__text-div">
-        <p class="bold">There is nothing here</p>
-        <p class="text">Create an invoice by clicking the</p>
-        <p><strong>New</strong> button and get started</p>
-      </div>
-    </div>
-    <ng-template #invoiceList>
-      <div class="invoice-list">
-        <app-invoice-item class="item" />
-      </div>
-    </ng-template>
+
+  @if (showForm) {
+
+  <div class="form">
+    <app-invoice-form (close)="closeForm()" />
   </div>
+  }
 </div>

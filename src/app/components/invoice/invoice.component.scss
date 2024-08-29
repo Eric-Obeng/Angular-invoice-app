@@ -2,71 +2,80 @@
 @import "../../../styles/base/variables";
 
 .invoice {
-  @include flex-container(column, flex-start, flex-start, nowrap, 3.2rem);
-  width: 100%;
-  height: 100vh;
-  padding: 3.2rem 2.4rem;
+  position: relative;
 
-  .invoice-desc {
-    font-size: $ft-size-l;
-    line-height: 1.25;
-
-    & h3 {
-      font-weight: 700;
-    }
-
-    & p {
-      font-size: $ft-size-s;
-      font-weight: 400;
-      line-height: 1.5;
-      letter-spacing: 0.1rem;
-      color: var(--text-clr-light);
-    }
-  }
-
-  .invoice-toolbar {
-    @include flex-container(row, center, space-between, nowrap, 1.8rem);
+  .invoice-div {
+    @include flex-container(column, flex-start, flex-start, nowrap, 3.2rem);
     width: 100%;
+    height: 100vh;
+    padding: 3.2rem 2.4rem;
 
-    .invoice-toolbar-items {
-      @include flex-container(row, center, space-between, nowrap, 1.8rem);
-    }
-  }
+    .invoice-desc {
+      font-size: $ft-size-l;
+      line-height: 1.25;
 
-  .content {
-    flex: 1;
-    width: 100%;
-    // align-content: center;
+      & h3 {
+        font-weight: 700;
+      }
 
-    .empty-content {
-      @include flex-container(column, center, flex-start, nowrap, 4rem);
-
-      .empty-content__text-div {
-        text-align: center;
-
-        .bold {
-          font-size: $ft-size-m;
-          font-weight: 600;
-          margin-bottom: 2rem;
-        }
-
-        p {
-          font-size: $ft-size-xs;
-          line-height: 1.5;
-        }
+      & p {
+        font-size: $ft-size-s;
+        font-weight: 400;
+        line-height: 1.5;
+        letter-spacing: 0.1rem;
+        color: var(--text-clr-light);
       }
     }
 
-    .invoice-list {
-      padding-bottom: 2rem;
-
+    .invoice-toolbar {
+      @include flex-container(row, center, space-between, nowrap, 1.8rem);
       width: 100%;
 
-      .item {
-        @include flex-container(column, null, null, null, 1.6rem);
-        width: 100%;
+      .invoice-toolbar-items {
+        @include flex-container(row, center, space-between, nowrap, 1.8rem);
       }
     }
+
+    .content {
+      flex: 1;
+      width: 100%;
+      // align-content: center;
+
+      .empty-content {
+        @include flex-container(column, center, flex-start, nowrap, 4rem);
+
+        .empty-content__text-div {
+          text-align: center;
+
+          .bold {
+            font-size: $ft-size-m;
+            font-weight: 600;
+            margin-bottom: 2rem;
+          }
+
+          p {
+            font-size: $ft-size-xs;
+            line-height: 1.5;
+          }
+        }
+      }
+
+      .invoice-list {
+        padding-bottom: 2rem;
+
+        width: 100%;
+
+        .item {
+          @include flex-container(column, null, null, null, 1.6rem);
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .form {
+    position: absolute;
+    top: 0;
   }
 }
 
