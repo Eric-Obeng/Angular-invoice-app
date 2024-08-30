@@ -105,13 +105,26 @@ export class InvoiceFormComponent {
     return items.reduce((acc, item) => acc + item.total, 0);
   }
 
+  formatDate(date: Date): string {
+    const options: Intl.DateTimeFormatOptions = {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    };
+    return date.toLocaleDateString('en-US', options).replace(' ', '');
+  }
+
+  generateShortId(): string {
+    return uuidv4().split('-')[0].slice(0, 6);
+  }
+
   saveAsDraft() {
     if (this.invoiceForm.valid) {
       const formValues = this.invoiceForm.value;
 
       const invoiceData: Invoice = {
-        id: uuidv4(),
-        createdAt: new Date().toISOString(),
+        id: this.generateShortId(),
+        createdAt: this.formatDate(new Date()),
         paymentDue: this.calculatePaymentDue(
           formValues.invoiceDate,
           formValues.paymentTerms
@@ -151,8 +164,8 @@ export class InvoiceFormComponent {
       const formValues = this.invoiceForm.value;
 
       const invoiceData: Invoice = {
-        id: uuidv4(),
-        createdAt: new Date().toISOString(),
+        id: this.generateShortId(),
+        createdAt: this.formatDate(new Date()),
         paymentDue: this.calculatePaymentDue(
           formValues.invoiceDate,
           formValues.paymentTerms

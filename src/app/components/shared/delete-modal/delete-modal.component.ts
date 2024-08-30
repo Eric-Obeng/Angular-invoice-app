@@ -5,8 +5,9 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './delete-modal.component.html',
-  styleUrl: './delete-modal.component.css'
+  styleUrl: './delete-modal.component.scss',
 })
 export class DeleteModalComponent {
-
+  deleteInvoice() {}
+  closeModal() {}
 }

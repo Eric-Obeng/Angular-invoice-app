@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { selectAllInvoices } from '../../../store/invoice.selector';
+import { selectAllInvoices, selectFilteredInvoice } from '../../../store/invoice.selector';
 import { Observable } from 'rxjs';
 import { Invoice } from '../../../interfaces/invoice';
 import { Store } from '@ngrx/store';
@@ -20,7 +20,7 @@ import { InvoiceStatusComponent } from "../../shared/invoice-status/invoice-stat
 export class InvoiceItemComponent {
   @Input() invoice!: Invoice;
 
-  invoices$: Observable<Invoice[]> = this.store.select(selectAllInvoices);
+  invoices$: Observable<Invoice[]> = this.store.select(selectFilteredInvoice);
 
   constructor(private store: Store<AppState>, private router: Router) {
     // this.invoices$.subscribe((res) => {
