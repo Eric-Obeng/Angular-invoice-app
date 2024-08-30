@@ -3,7 +3,8 @@
 
 .invoice-app {
   @include flex-container(column, start, start, null, null);
-  width: 100vw;
+  height: 100vh;
+  // width: 100vw;
 
   .invoice-app__header {
     display: flex;
@@ -18,9 +19,9 @@
 
   .invoice-app__main-container {
     width: 100%;
+    position: relative;
   }
 }
-
 
 @media (min-width: 1024px) {
   .invoice-app {
@@ -28,16 +29,15 @@
     overflow: hidden !important;
 
     .invoice-app__header {
+      z-index: 10;
       width: 10.3rem;
     }
 
     .invoice-app__main-container {
-      @include flex-container(row, center, center, null, null);
-      flex: 1;
       overflow: scroll;
       scrollbar-width: none;
       scroll-behavior: smooth;
-      width: 80rem;
+      height: 100%;
     }
   }
 }
