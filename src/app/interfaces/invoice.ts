@@ -30,9 +30,11 @@ export interface Invoice {
 export interface InvoiceState {
   invoices: Invoice[];
   error: string | null;
+  selectedStatuses: string[];
 }
 
 export const initialState: InvoiceState = {
   invoices: [],
   error: null,
+  selectedStatuses: [],
 };

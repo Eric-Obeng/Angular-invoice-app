@@ -22,3 +22,8 @@ export const addInvoiceAsPending = createAction(
   '[Invoice] Add Invoice As Pending',
   props<{ invoices: Invoice }>()
 );
+
+export const setSelectedStatus = createAction(
+  '[Invoice] Set Status',
+  props<{ selectedStatuses: string[] }>()
+);

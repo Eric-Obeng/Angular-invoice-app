@@ -6,7 +6,7 @@
         <p>No Invoices</p>
       </div>
       <div class="invoice-toolbar-items">
-        <app-invoice-filter />
+        <app-invoice-filter (filterClicked)="handleFilterClicked()"  (status)="onStatusChange($event)"/>
         <app-button (buttonClick)="openForm()" />
       </div>
     </div>
@@ -36,7 +36,6 @@
   </div>
 
   @if (showForm) {
-
   <div class="form">
     <app-invoice-form (close)="closeForm()" />
   </div>

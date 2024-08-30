@@ -26,37 +26,40 @@
           />
         </label>
         <div class="location-div">
-          <label for="city">
-            City <br />
+          <div class="col-1">
+            <label for="city">
+              City <br />
+              <input
+                class="form-item"
+                type="text"
+                formControlName="city"
+                placeholder="City"
+                id="city"
+              />
+            </label>
+            <label for="postCode">
+              Post Code <br />
+              <input
+                class="form-item"
+                type="text"
+                formControlName="postCode"
+                placeholder="Post Code"
+                id="postCode"
+              />
+            </label>
+          </div>
+
+          <label for="country">
+            Country <br />
             <input
               class="form-item"
               type="text"
-              formControlName="city"
-              placeholder="City"
-              id="city"
-            />
-          </label>
-          <label for="postCode">
-            Post Code <br />
-            <input
-              class="form-item"
-              type="text"
-              formControlName="postCode"
-              placeholder="Post Code"
-              id="postCode"
+              formControlName="country"
+              placeholder="Country"
+              id="country"
             />
           </label>
         </div>
-        <label for="country">
-          Country <br />
-          <input
-            class="form-item"
-            type="text"
-            formControlName="country"
-            placeholder="Country"
-            id="country"
-          />
-        </label>
       </div>
 
       <div formGroupName="billTo" class="billTo group">
@@ -136,7 +139,11 @@
         </label>
         <label for="paymentTerm">
           Payment Terms <br />
-          <select class="form-item" formControlName="paymentTerms" id="paymentTerm">
+          <select
+            class="form-item"
+            formControlName="paymentTerms"
+            id="paymentTerm"
+          >
             <option value="2">Next 2 Days</option>
             <option value="3">Next 3 Days</option>
             <option value="4">Next 4 Days</option>

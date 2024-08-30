@@ -5,6 +5,7 @@ import {
   loadInvoiceFailure,
   addInvoiceAsDraft,
   addInvoiceAsPending,
+  setSelectedStatus,
 } from './invoice.actions';
 import { Invoice } from '../interfaces/invoice';
 import { Action } from '@ngrx/store';
@@ -39,6 +40,10 @@ export const _invoiceReducer = createReducer(
   on(addInvoiceAsPending, (state, { invoices }) => ({
     ...state,
     invoices: [...state.invoices, invoices],
+  })),
+  on(setSelectedStatus, (state, { selectedStatuses }) => ({
+    ...state,
+    selectedStatuses,
   }))
 );
 

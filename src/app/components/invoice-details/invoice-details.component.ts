@@ -10,11 +10,18 @@ import { AppState } from '../../store/invoice.state';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InvoiceStatusComponent } from '../shared/invoice-status/invoice-status.component';
+import { InvoiceActionsComponent } from '../shared/invoice-actions/invoice-actions.component';
+import { DeleteModalComponent } from '../shared/delete-modal/delete-modal.component';
 
 @Component({
   selector: 'app-invoice-details',
   standalone: true,
-  imports: [CommonModule, InvoiceStatusComponent],
+  imports: [
+    CommonModule,
+    InvoiceStatusComponent,
+    InvoiceActionsComponent,
+    DeleteModalComponent,
+  ],
   templateUrl: './invoice-details.component.html',
   styleUrl: './invoice-details.component.scss',
 })

@@ -1,6 +1,22 @@
-<div class="invoice__filter">
+<div class="invoice__filter" (click)="displayDropDown()">
   <p>Filter</p>
   <div class="filter-btn">
     <img src="assets/images/icon-arrow-down.svg" alt="arrow-down icon" />
   </div>
 </div>
+
+@if (showFilterDropDown) {
+<div class="dropdown-menu">
+  @for (status of statuses; track $index) {
+  <div class="item">
+    <input
+      type="checkbox"
+      id="{{ status }}"
+      name="{{ status }}"
+      (click)="getSelectedStatus(status)"
+    />
+    <label for="{{ status }}">{{ status | titlecase }}</label>
+  </div>
+  }
+</div>
+}
