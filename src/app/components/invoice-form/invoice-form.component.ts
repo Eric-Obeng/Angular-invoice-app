@@ -58,7 +58,7 @@ export class InvoiceFormComponent {
     });
   }
 
-  // Method to create a new item form group
+
   createItem(): FormGroup {
     return this.fb.group({
       itemName: ['', Validators.required],
