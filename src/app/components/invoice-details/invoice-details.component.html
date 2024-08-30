@@ -14,6 +14,9 @@
         <p>Status</p>
         <app-invoice-status [invoice]="invoice" />
       </div>
+      <div class="action">
+        <app-invoice-actions />
+      </div>
     </div>
     <div class="details-info">
       <div class="detail-info__col-1">
@@ -42,12 +45,12 @@
           <p class="date">
             Invoice Date<br />
             <strong>
-              {{ invoice.createdAt }}
+              {{ invoice.createdAt | date : "dd MMM yyyy" }}
             </strong>
           </p>
           <p class="date">
             Payment Due<br />
-            <strong> {{ invoice.paymentDue }} </strong>
+            <strong> {{ invoice.paymentDue | date : "dd MMM yyyy" }} </strong>
           </p>
         </div>
         <div class="invoice-client">
@@ -74,32 +77,42 @@
       </div>
 
       <div class="invoice-items">
-        <div class="item-header">
-          <span>Item Name</span>
-          <span>QTY.</span>
-          <span>Price</span>
-          <span>Total</span>
+        @for (item of invoice.items; track $index) {
+        <div class="invoice-items-details">
+          <div class="item-header">
+            <span>Item Name</span>
+            <span>QTY.</span>
+            <span>Price</span>
+            <span>Total</span>
+          </div>
+          <div class="item-row">
+            <div class="col-1">
+              <span class="description">{{ invoice.description }}</span>
+              <div class="detail">
+                <span>{{ item.quantity }}</span>
+                x
+                <span>{{ item.price }}</span>
+              </div>
+            </div>
+            <span class="total">{{
+              item.quantity * item.price | currency : "GBP"
+            }}</span>
+          </div>
         </div>
-        <div class="item-row">
-          <span>{{ invoice.description }}</span>
-          <span>{{ invoice.items[0].quantity }}</span>
-          <span>{{
-            invoice.items[0].price | currency : "BGP" : "symbol"
-          }}</span>
-          <span>{{ invoice.items[0].quantity * invoice.items[0].price }}</span>
-        </div>
-        <div class="item-row">
-          <span>Email Design</span>
-          <span>2</span>
-          <span>£ 200.00</span>
-          <span>£ 400.00</span>
-        </div>
+        }
+
         <div class="total-amount">
-          <span>Amount Due</span>
-          <span>£ 556.00</span>
+          <span class="title">Amount Due</span>
+          <span class="amount">{{ invoice.total | currency : "GBP" }}</span>
         </div>
       </div>
     </div>
   </div>
-  <div></div>
+  <div class="actions">
+    <app-invoice-actions />
+  </div>
+  <div class="delete">
+    <!-- <app-delete-modal /> -->
+    <app-delete-modal />
+  </div>
 </div>
