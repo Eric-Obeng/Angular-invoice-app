@@ -4,8 +4,12 @@
   (click)="viewInvoiceDeatil(invoice.id)"
 >
   <div class="invoice-header">
-    <span class="invoice-id"><span class="hash">#</span>{{ invoice.id }}</span>
-    <span class="invoice-date">Due {{ invoice.createdAt }}</span>
+    <span class="invoice-id"
+      ><span class="hash">#</span>{{ invoice.id | uppercase }}</span
+    >
+    <span class="invoice-date"
+      >Due {{ invoice.paymentDue | date : "dd MMM yyyy" }}</span
+    >
     <span class="invoice-client">{{ invoice.clientName }}</span>
   </div>
   <div class="invoice-details">
