@@ -42,7 +42,8 @@ $light-mode: (
   "text-clr-light": $gray-200,
   "card-clr": $white,
   "detail": $detail-card-light,
-  'form-bg': $white
+  "form-bg": $white,
+  "total": $Purple-200,
 );
 
 $dark-mode: (
@@ -52,7 +53,8 @@ $dark-mode: (
   "text-clr-light": $gray-200,
   "card-clr": $Purple-400,
   "detail": $Purple-200,
-  'form-bg': $dark-100
+  "form-bg": $dark-100,
+  "total": $dark-200,
 );
 
 @function theme-value($key, $theme: $light-mode) {
