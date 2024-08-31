@@ -6,7 +6,10 @@
         <p>No Invoices</p>
       </div>
       <div class="invoice-toolbar-items">
-        <app-invoice-filter (filterClicked)="handleFilterClicked()"  (status)="onStatusChange($event)"/>
+        <app-invoice-filter
+          (filterClicked)="handleFilterClicked()"
+          (status)="onStatusChange($event)"
+        />
         <app-button (buttonClick)="openForm()" />
       </div>
     </div>
@@ -29,7 +32,7 @@
       </div>
       <ng-template #invoiceList>
         <div class="invoice-list">
-          <app-invoice-item class="item" />
+          <app-invoice-item class="item" (editClicked)="openForm()" />
         </div>
       </ng-template>
     </div>

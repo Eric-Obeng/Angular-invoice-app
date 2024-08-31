@@ -27,3 +27,18 @@ export const setSelectedStatus = createAction(
   '[Invoice] Set Status',
   props<{ selectedStatuses: string[] }>()
 );
+
+export const deleteInvoice = createAction(
+  '[Invoice] Delete Invoice',
+  props<{ id: string }>()
+);
+
+export const loadInvoiceById = createAction(
+  '[Invoice] Load Invoice By Id',
+  props<{ id: string }>()
+);
+
+export const updateInvoiceStatus = createAction(
+  '[Invoice] Update Invoice Status',
+  props<{ id: string; status: 'pending' | 'paid' }>()
+);
