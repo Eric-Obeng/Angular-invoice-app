@@ -1,5 +1,9 @@
 <div class="actions">
-  <button type="button" class="btn edit">Edit</button>
-  <button type="button" class="btn delete">Delete</button>
-  <button type="button" class="btn paid">Mark as Paid</button>
+  <button type="button" class="btn edit" (click)="onEditClick()">Edit</button>
+  <button type="button" class="btn delete" (click)="onDeleteClick()">
+    Delete
+  </button>
+  <button type="button" class="btn paid" (click)="onMarkAsPaidClick()">
+    {{ getMarkAsPaidButtonText() }}
+  </button>
 </div>

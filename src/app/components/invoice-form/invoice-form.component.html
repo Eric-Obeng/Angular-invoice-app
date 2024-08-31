@@ -11,7 +11,11 @@
           </span>
           <p>Go back</p>
         </div>
+        @if (invoice) {
+        <p class="title">Edit <span>#</span>{{ invoice.id }}</p>
+        } @else {
         <p class="title">New Invoice</p>
+        }
       </div>
       <div formGroupName="billFrom" class="billfrom group">
         <h5>Bill From</h5>

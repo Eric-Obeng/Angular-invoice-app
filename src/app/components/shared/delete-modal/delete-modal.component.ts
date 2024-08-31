@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-delete-modal',
@@ -8,6 +9,15 @@ import { Component } from '@angular/core';
   styleUrl: './delete-modal.component.scss',
 })
 export class DeleteModalComponent {
-  deleteInvoice() {}
-  closeModal() {}
+  @Output() deleteConfirmed = new EventEmitter<string>();
+  @Input() invoiceId!: string;
+
+  private route = inject(Router);
+
+  confirmDelete() {
+    this.deleteConfirmed.emit(this.invoiceId);
+    
+  }
+
+  cancelDelete() {}
 }

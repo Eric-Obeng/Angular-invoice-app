@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { selectAllInvoices, selectFilteredInvoice } from '../../../store/invoice.selector';
 import { Observable } from 'rxjs';
 import { Invoice } from '../../../interfaces/invoice';
@@ -19,6 +19,7 @@ import { InvoiceStatusComponent } from "../../shared/invoice-status/invoice-stat
 })
 export class InvoiceItemComponent {
   @Input() invoice!: Invoice;
+  @Output() editClicked = new EventEmitter<void>();
 
   invoices$: Observable<Invoice[]> = this.store.select(selectFilteredInvoice);
 
@@ -35,5 +36,9 @@ export class InvoiceItemComponent {
   viewInvoiceDeatil(invoiceId: string) {
     console.log('navigate:', invoiceId);
     this.router.navigate(['/invoices', invoiceId]);
+  }
+
+  onEditClick(){
+    this.editClicked.emit()
   }
 }

@@ -15,7 +15,12 @@
         <app-invoice-status [invoice]="invoice" />
       </div>
       <div class="action">
-        <app-invoice-actions />
+        <app-invoice-actions
+          (deleteClicked)="openDeleteModal()"
+          (editClicked)="onEdit()"
+          [invoice]="invoice"
+          (markAsPaid)="onMarkAsPaid(invoiceId)"
+        />
       </div>
     </div>
     <div class="details-info">
@@ -108,11 +113,27 @@
       </div>
     </div>
   </div>
-  <div class="actions">
-    <app-invoice-actions />
+  <div class="actions" *ngIf="invoices$ | async as invoice">
+    <app-invoice-actions
+      (deleteClicked)="openDeleteModal()"
+      (editClicked)="onEdit()"
+      [invoice]="invoice"
+      (markAsPaid)="onMarkAsPaid(invoiceId)"
+    />
   </div>
+
+  @if (showDeleteModal) {
+
   <div class="delete">
     <!-- <app-delete-modal /> -->
-    <app-delete-modal />
+    <app-delete-modal
+      [invoiceId]="invoice.id"
+      (deleteConfirmed)="onDeleteInvoice($event)"
+    />
   </div>
+  } @if (showForm) {
+  <div class="form">
+    <app-invoice-form [invoice]="invoice" (close)="closeForm()" />
+  </div>
+  }
 </div>
