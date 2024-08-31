@@ -6,6 +6,9 @@ import {
   addInvoiceAsDraft,
   addInvoiceAsPending,
   setSelectedStatus,
+  deleteInvoice,
+  loadInvoiceById,
+  updateInvoiceStatus,
 } from './invoice.actions';
 import { Invoice } from '../interfaces/invoice';
 import { Action } from '@ngrx/store';
@@ -44,6 +47,23 @@ export const _invoiceReducer = createReducer(
   on(setSelectedStatus, (state, { selectedStatuses }) => ({
     ...state,
     selectedStatuses,
+  })),
+  on(deleteInvoice, (state, { id }) => ({
+    ...state,
+    invoices: state.invoices.filter((invoice) => invoice.id !== id),
+  })),
+  on(loadInvoiceById, (state, { id }) => {
+    const selectedInvoice = state.invoices.find((invoice) => invoice.id === id);
+    return {
+      ...state,
+      selectedInvoice: selectedInvoice || undefined,
+    };
+  }),
+  on(updateInvoiceStatus, (state, { id, status }) => ({
+    ...state,
+    invoices: state.invoices.map((invoice) =>
+      invoice.id === id ? { ...invoice, status } : invoice
+    ),
   }))
 );
 
