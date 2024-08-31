@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -26,45 +26,63 @@ import { Invoice } from '../../interfaces/invoice';
 export class InvoiceFormComponent {
   invoiceForm!: FormGroup;
   @Output() close = new EventEmitter<void>();
+  @Input() invoice?: Invoice;
 
   constructor(private fb: FormBuilder, private store: Store) {}
 
   ngOnInit(): void {
     this.invoiceForm = this.fb.group({
-      // bill from
+      // Initialize form controls
       billFrom: this.fb.group({
-        streetAddress: ['', Validators.required],
-        city: ['', Validators.required],
-        postCode: ['', Validators.required],
-        country: ['', Validators.required],
+        streetAddress: [
+          this.invoice?.senderAddress.street || '',
+          Validators.required,
+        ],
+        city: [this.invoice?.senderAddress.city || '', Validators.required],
+        postCode: [
+          this.invoice?.senderAddress.postCode || '',
+          Validators.required,
+        ],
+        country: [
+          this.invoice?.senderAddress.country || '',
+          Validators.required,
+        ],
       }),
-
-      // bill to
       billTo: this.fb.group({
-        clientName: ['', Validators.required],
-        clientEmail: ['', Validators.required],
-        streetAddress: ['', Validators.required],
-        city: ['', Validators.required],
-        postCode: ['', Validators.required],
-        country: ['', Validators.required],
+        clientName: [this.invoice?.clientName || '', Validators.required],
+        clientEmail: [this.invoice?.clientEmail || '', Validators.required],
+        streetAddress: [
+          this.invoice?.clientAddress.street || '',
+          Validators.required,
+        ],
+        city: [this.invoice?.clientAddress.city || '', Validators.required],
+        postCode: [
+          this.invoice?.clientAddress.postCode || '',
+          Validators.required,
+        ],
+        country: [
+          this.invoice?.clientAddress.country || '',
+          Validators.required,
+        ],
       }),
-
-      // invoice details
-      invoiceDate: ['', Validators.required],
-      paymentTerms: ['', Validators.required],
-      projectDescription: ['', Validators.required],
-
-      items: this.fb.array([this.createItem()]),
+      invoiceDate: [this.invoice?.createdAt || '', Validators.required],
+      paymentTerms: [this.invoice?.paymentTerms || '', Validators.required],
+      projectDescription: [
+        this.invoice?.description || '',
+        Validators.required,
+      ],
+      items: this.fb.array(
+        this.invoice?.items.map((item) => this.createItem()) || []
+      ),
     });
   }
 
-
   createItem(): FormGroup {
     return this.fb.group({
-      itemName: ['', Validators.required],
-      quantity: [1, [Validators.required, Validators.min(1)]],
-      price: [0, [Validators.required, Validators.min(0)]],
-      total: [{ value: 0, disabled: true }],
+      itemName: ['', Validators.required], // Initialize with empty string
+      quantity: [1, [Validators.required, Validators.min(1)]], // Default quantity
+      price: [0, [Validators.required, Validators.min(0)]], // Default price
+      total: [{ value: 0, disabled: true }], // Default total
     });
   }
 

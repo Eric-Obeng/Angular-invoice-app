@@ -25,6 +25,10 @@
       .title {
         font-size: $ft-size-m;
         font-weight: 600;
+
+        span {
+          color: $gray-300;
+        }
       }
     }
 
