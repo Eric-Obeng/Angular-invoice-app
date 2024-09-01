@@ -32,7 +32,6 @@ export class InvoiceFilterComponent {
     this.store.dispatch(
       setSelectedStatus({ selectedStatuses: this.selectedStatuses })
     );
-    console.log(this.selectedStatuses);
     this.status.emit(this.selectedStatuses);
   }
 }
