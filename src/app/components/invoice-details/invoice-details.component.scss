@@ -5,8 +5,9 @@
   @include flex-container(column, center, center, nowrap, null);
   position: relative;
   width: 100%;
-  height: 100vh;
   margin: auto;
+  font-size: $ft-size-s;
+  color: var(--detail-text);
 
   .invoice-detail {
     @include flex-container(column, start, start, nowrap, 3rem);
@@ -18,7 +19,13 @@
       @include flex-container(row, start, start, null, 2.4rem);
       width: 100%;
       font-size: $ft-size-s;
+      font-weight: 600;
       cursor: pointer;
+      color: var(--text-clr);
+
+      &:hover {
+        color: var(--navigate);
+      }
     }
 
     .status-div {
@@ -52,7 +59,17 @@
 
         .top {
           @include flex-container(column, start, start, null, null);
-          line-height: 1.5;
+
+          .invoice-id {
+            line-height: 1.5;
+            font-weight: 700;
+            font-size: $ft-size-m;
+            color: var(--text-clr);
+
+            .hash {
+              color: #888eb0;
+            }
+          }
         }
 
         .address {
@@ -78,10 +95,10 @@
           .date {
             line-height: 1.8;
 
-            & strong {
-              font-size: $ft-size-s;
-              font-weight: 600;
-            }
+            // & strong {
+            //   font-size: $ft-size-s;
+            //   font-weight: 600;
+            // }
           }
         }
 
@@ -90,11 +107,6 @@
 
           .client {
             @include flex-container(column, start, start, null, 0.5rem);
-
-            & strong {
-              font-size: $ft-size-s;
-              font-weight: 600;
-            }
           }
 
           .address {
@@ -115,12 +127,16 @@
         background-color: var(--detail);
         @include card(100%, 100%, var(--detail), null, 0.8rem);
 
+        .item-header {
+          display: none;
+
+          .name {
+            width: 30%;
+          }
+        }
+
         .invoice-items-details {
           width: 100%;
-
-          .item-header {
-            display: none;
-          }
 
           .item-row {
             @include flex-container(row, start, space-between, null, null);
@@ -131,12 +147,15 @@
 
               .description {
                 font-size: $ft-size-s;
+                font-weight: 600;
+                color: var(--text-clr);
               }
             }
 
             .total {
               font-size: $ft-size-s;
               font-weight: 600;
+              color: var(--text-clr);
             }
           }
         }
@@ -206,6 +225,58 @@
 
           .invoice-email {
             margin: 0;
+          }
+        }
+
+        .invoice-items {
+          .item-header {
+            @include flex-container(row, start, space-between, null, null);
+            padding: 2.4rem 2.4rem 0 2.4rem;
+          }
+
+          .invoice-items-details {
+            width: 100%;
+
+            & .item-row {
+              @include flex-container(row, start, space-between, null, null);
+
+              & .col-1 {
+                @include flex-container(
+                  row,
+                  center,
+                  space-between,
+                  null,
+                  2.5rem
+                );
+                width: 100%;
+
+                .description {
+                  font-size: $ft-size-s;
+                  font-weight: 600;
+                  width: 35%;
+                }
+
+                .detail {
+                  flex: 1;
+                  @include flex-container(
+                    row,
+                    start,
+                    space-evenly,
+                    null,
+                    2.6rem
+                  );
+
+                  .x {
+                    display: none;
+                  }
+                }
+              }
+
+              .total {
+                font-size: $ft-size-s;
+                font-weight: 600;
+              }
+            }
           }
         }
       }
