@@ -18,7 +18,7 @@ export class ThemeService {
         localStorage.setItem('theme', 'dark');
       } else {
         document.body.classList.remove('dark-mode');
-        localStorage.setItem('them', 'light');
+        localStorage.setItem('theme', 'light');
       }
     });
   }
