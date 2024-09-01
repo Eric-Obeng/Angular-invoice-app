@@ -1,9 +1,17 @@
-<div class="invoice">
+<div class="invoice" *ngIf="invoices$ | async as invoice">
   <div class="invoice-div">
     <div class="invoice-toolbar">
       <div class="invoice-desc">
         <h3>Invoice</h3>
+        @if (invoice.length === 0) {
         <p>No Invoices</p>
+        } @else if (invoice.length === 1) {
+        <p class="length"><span>There is</span> {{ invoice.length }} invoice</p>
+        } @else {
+        <p class="length">
+          <span>There are</span> {{ invoice.length }} invoices
+        </p>
+        }
       </div>
       <div class="invoice-toolbar-items">
         <app-invoice-filter

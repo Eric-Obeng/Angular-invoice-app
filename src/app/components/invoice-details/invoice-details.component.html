@@ -26,7 +26,7 @@
     <div class="details-info">
       <div class="detail-info__col-1">
         <div class="top">
-          <span class="invoice-id">{{ invoice.id }}</span>
+          <span class="invoice-id"><span class="hash">#</span>{{ invoice.id }}</span>
           <span class="invoice-title">{{ invoice.description }}</span>
         </div>
         <address class="address">
@@ -82,20 +82,20 @@
       </div>
 
       <div class="invoice-items">
+        <div class="item-header">
+          <span class="name">Item Name</span>
+          <span>QTY.</span>
+          <span>Price</span>
+          <span>Total</span>
+        </div>
         @for (item of invoice.items; track $index) {
         <div class="invoice-items-details">
-          <div class="item-header">
-            <span>Item Name</span>
-            <span>QTY.</span>
-            <span>Price</span>
-            <span>Total</span>
-          </div>
           <div class="item-row">
             <div class="col-1">
               <span class="description">{{ invoice.description }}</span>
               <div class="detail">
                 <span>{{ item.quantity }}</span>
-                x
+                <span class="x"> x </span>
                 <span>{{ item.price }}</span>
               </div>
             </div>

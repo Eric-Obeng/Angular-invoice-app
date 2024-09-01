@@ -44,6 +44,10 @@ $light-mode: (
   "detail": $detail-card-light,
   "form-bg": $white,
   "total": $Purple-200,
+  "detail-text": $gray-200,
+  'navigate': $Purple-light,
+  'filter': $Purple,
+
 );
 
 $dark-mode: (
@@ -55,7 +59,16 @@ $dark-mode: (
   "detail": $Purple-200,
   "form-bg": $dark-100,
   "total": $dark-200,
+  "detail-text": $gray-100,
+  "navigate": $gray-300,
+  'filter': $Purple-light
 );
+
+strong {
+  color: var(--text-clr);
+  font-size: $ft-size-m;
+  font-weight: 700;
+}
 
 @function theme-value($key, $theme: $light-mode) {
   @return map-get(map-get($themes, $theme), $key);

@@ -1,5 +1,5 @@
-@import '../../../../styles/base/mixins';
-@import '../../../../styles/base/variables';
+@import "../../../../styles/base/mixins";
+@import "../../../../styles/base/variables";
 
 .actions {
   @include card(100%, 9.1rem, var(--card-clr), null, null);
@@ -20,10 +20,18 @@
 
     &.delete {
       background-color: $Red;
+
+      &:hover {
+        background-color: $Red-light;
+      }
     }
 
     &.paid {
       background-color: $Purple;
+
+      &:hover {
+        background-color: $Purple-light;
+      }
     }
   }
 }

@@ -11,6 +11,10 @@
   cursor: pointer;
   transition: all 0.2s ease;
 
+  .invoice {
+    display: none;
+  }
+
   &:hover {
     background-color: $Purple-light;
   }
@@ -19,5 +23,14 @@
     @include btn(3.2rem, 3.2rem, $white, $Purple);
     border-radius: 50%;
     @include flex-container(row, center, center, nowrap, 1.8rem);
+  }
+}
+
+@media (min-width: 768px) {
+  .invoice__add-btn {
+    @include btn(13rem, 4.4rem, $Purple, $white);
+    .invoice {
+      display: inline-block;
+    }
   }
 }
