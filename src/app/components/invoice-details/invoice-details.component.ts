@@ -74,6 +74,9 @@ export class InvoiceDetailsComponent {
   openDeleteModal() {
     this.showDeleteModal = true;
   }
+  closeDeleteModal() {
+    this.showDeleteModal = false;
+  }
   onDeleteInvoice(invoiceId: string) {
     this.store.dispatch(deleteInvoice({ id: invoiceId }));
     this.showDeleteModal = true;

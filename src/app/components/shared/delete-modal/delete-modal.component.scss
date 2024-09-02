@@ -8,20 +8,55 @@
   height: 100vh;
 
   .delete {
+    @include flex-container(column, start, start, null, 1rem);
     height: 22rem;
     width: 32.7rem;
     background-color: var(--card-clr);
+    color: var(--text-clr);
     border-radius: 0.8rem;
     padding: 3.2rem;
 
     h2 {
-      font-size: $ft-size-m;
+      font-size: $ft-size-l;
       font-weight: 600;
       line-height: 1.25;
     }
 
     p {
-      line-height: 1.5;
+      line-height: 1.8;
+      font-size: $ft-size-s;
+      color: #888eb0;
+    }
+
+    .buttons {
+      @include flex-container(row, center, end, null, 0.8rem);
+      flex: 1;
+      align-self: end;
+      height: 100%;
+
+      .btn {
+        width: 9.1rem;
+        height: 4.8rem;
+        border-radius: 2.4rem;
+        cursor: pointer;
+        border: none !important;
+        font-size: $ft-size-s;
+        color: $white;
+        font-weight: 600;
+
+        &.cancel-btn {
+          background-color: var(--detail);
+          color: var(--detail-text);
+        }
+
+        &.delete-btn {
+          background-color: $Red;
+
+          &:hover {
+            background-color: $Red-light;
+          }
+        }
+      }
     }
   }
 }
