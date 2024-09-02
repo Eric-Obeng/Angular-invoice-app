@@ -10,14 +10,16 @@ import { Router } from '@angular/router';
 })
 export class DeleteModalComponent {
   @Output() deleteConfirmed = new EventEmitter<string>();
+  @Output() closeModal = new EventEmitter<void>();
   @Input() invoiceId!: string;
 
   private route = inject(Router);
 
   confirmDelete() {
     this.deleteConfirmed.emit(this.invoiceId);
-    
   }
 
-  cancelDelete() {}
+  cancelDelete() {
+    this.closeModal.emit();
+  }
 }
