@@ -175,7 +175,7 @@ export class InvoiceFormComponent {
 
       this.store.dispatch(addInvoiceAsDraft({ invoices: invoiceData }));
     }
-    console.log('Just log anything');
+    this.closeForm();
   }
   saveAndSend() {
     if (this.invoiceForm.valid) {
@@ -215,6 +215,7 @@ export class InvoiceFormComponent {
       };
 
       this.store.dispatch(addInvoiceAsPending({ invoices: invoiceData }));
+      this.closeForm();
     }
   }
 
