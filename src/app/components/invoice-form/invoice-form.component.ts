@@ -9,8 +9,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
-  addInvoiceAsDraft,
-  addInvoiceAsPending,
+  addInvoice,
 } from '../../store/invoice.actions';
 import { Store } from '@ngrx/store';
 import { v4 as uuidv4 } from 'uuid';
@@ -173,9 +172,9 @@ export class InvoiceFormComponent {
         total: this.calculateTotalInvoiceAmount(formValues.items),
       };
 
-      this.store.dispatch(addInvoiceAsDraft({ invoices: invoiceData }));
+      this.store.dispatch(addInvoice({ invoices: invoiceData }));
     }
-    console.log('Just log anything');
+    this.closeForm();
   }
   saveAndSend() {
     if (this.invoiceForm.valid) {
@@ -214,7 +213,8 @@ export class InvoiceFormComponent {
         total: this.calculateTotalInvoiceAmount(formValues.items),
       };
 
-      this.store.dispatch(addInvoiceAsPending({ invoices: invoiceData }));
+      this.store.dispatch(addInvoice({ invoices: invoiceData }));
+      this.closeForm();
     }
   }
 

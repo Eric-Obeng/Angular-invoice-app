@@ -13,15 +13,15 @@ export const loadInvoiceFailure = createAction(
   props<{ error: any }>()
 );
 
-export const addInvoiceAsDraft = createAction(
-  '[Invoice] Add Invoice As Draft',
+export const addInvoice = createAction(
+  '[Invoice] Add Invoice',
   props<{ invoices: Invoice }>()
 );
 
-export const addInvoiceAsPending = createAction(
-  '[Invoice] Add Invoice As Pending',
-  props<{ invoices: Invoice }>()
-);
+// export const addInvoiceAsPending = createAction(
+//   '[Invoice] Add Invoice As Pending',
+//   props<{ invoices: Invoice }>()
+// );
 
 export const setSelectedStatus = createAction(
   '[Invoice] Set Status',

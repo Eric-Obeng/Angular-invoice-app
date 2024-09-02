@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { HttpClient } from '@angular/common/http';
-import { map, catchError, switchMap, tap, mergeMap } from 'rxjs/operators';
-import { of, Observable } from 'rxjs';
+import { map, catchError, mergeMap, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
 import {
   loadInvoice,
   loadInvoiceSuccess,
   loadInvoiceFailure,
-  addInvoiceAsDraft,
-  addInvoiceAsPending,
 } from './invoice.actions';
 import { Invoice } from '../interfaces/invoice';
 import { InvoiceService } from '../services/invoice.service';
@@ -24,7 +22,7 @@ export class InvoiceEffects {
     private invoiceService: InvoiceService
   ) {}
 
-  loadInvoices$: Observable<Action> = createEffect(() =>
+  loadInvoices$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadInvoice),
       mergeMap(() => {
@@ -37,10 +35,7 @@ export class InvoiceEffects {
             tap((invoices: Invoice[]) => {
               localStorage.setItem('invoices', JSON.stringify(invoices));
             }),
-            map((invoices: Invoice[]) => {
-              localStorage.setItem('invoices', JSON.stringify(invoices));
-              return loadInvoiceSuccess({ invoices });
-            }),
+            map((invoices: Invoice[]) => loadInvoiceSuccess({ invoices })),
             catchError((error) => of(loadInvoiceFailure({ error })))
           );
         }
